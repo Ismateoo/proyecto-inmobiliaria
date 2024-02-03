@@ -1,4 +1,5 @@
-knex = require('../config/database')
+const knex = require('../config/database')
+
 
 
 const bienvenida = (req, res) => {
@@ -27,20 +28,37 @@ const crearInmueble = async (req, res) => {
     res.json(result)
 }
 
-const editarInmueble = (req, res) => {
-    res.send("Editar Inmueble")
+const editarInmueble = async (req, res) => {
+    const body = req.body
+    const id = req.params.id
+    const result = await knex('inmobiliaria').update(body).where({'id': id}).returning('*')
+    res.json(result)
 }
 
-const eliminarInmueble = (req, res) => {
-    res.send("Eliminar Inmueble")
+const eliminarInmueble = async (req, res) => {
+    const id =   req.params.id
+    const result = await knex('inmobiliaria').delete().where({'id': id}).returning('*')
+    if(result.length != 0){
+        res.send("Se ha eliminado con exito")
+    }else{
+        res.send("No se ha podido eliminar")
+    }
 }
 
-const filtrarInmueble = (req, res) => {
-    res.send("Filtar")
+const filtrarInmueble = async (req, res) => {
+    const metrosCuadrados = req.body.metroscuadrados
+    const precioVenta = req.body.precioventa
+    const result = await knex('inmobiliaria').select('*').where({'metroscuadrados': metrosCuadrados}).orWhere({'precioventa': precioVenta}).returning('*')
+    res.send(result)
 }
 
-const mostrarInfo = (req, res) => {
-    res.send("Info")
+const mostrarInfo = async (req, res) => {
+    let cantidad = await knex('inmobiliaria').count()
+    let fecha = await knex('inmobiliaria').select(knex.raw('current_timestamp'));
+    
+    cantidad = cantidad[0].count
+    fecha = fecha[0].current_timestamp
+    res.send(`Hay ${cantidad} inmuebles registrados hasta el momento ${fecha}`)
 }
 
 module.exports = {
