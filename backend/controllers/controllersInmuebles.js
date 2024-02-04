@@ -48,8 +48,19 @@ const eliminarInmueble = async (req, res) => {
 const filtrarInmueble = async (req, res) => {
     const metrosCuadrados = req.body.metroscuadrados
     const precioVenta = req.body.precioventa
-    const result = await knex('inmobiliaria').select('*').where({'metroscuadrados': metrosCuadrados}).orWhere({'precioventa': precioVenta}).returning('*')
-    res.send(result)
+    let result = ""
+
+    if(metrosCuadrados && precioVenta){
+     result = await knex('inmobiliaria').select('*').where({'metroscuadrados': metrosCuadrados}).orWhere({'precioventa': precioVenta})
+     
+    }else if(metrosCuadrados){
+         result = await knex('inmobiliaria').select('*').where({'metroscuadrados': metrosCuadrados})
+        
+    } else if(precioVenta){
+         result = await knex('inmobiliaria').select('*').where({'precioventa': precioVenta})
+         
+    }
+    res.json(result)
 }
 
 const mostrarInfo = async (req, res) => {
