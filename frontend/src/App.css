@@ -1,0 +1,14 @@
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+.main{
+    width: 1400px;
+    height: 750px;
+    background-color: #F3F3CC;
+}

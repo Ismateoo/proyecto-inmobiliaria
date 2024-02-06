@@ -1,15 +1,20 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-import './App.css'
+import "./App.css";
+import Login from "./componentes/Login/login";
+import Nav from "./componentes/Nav/nav";
 
 function App() {
-
-
   return (
     <>
-    <p>Hola</p>
+      <div className="contenedor">
+        <div className="main poppins-regular">
+         {/* <Login/> */}
+         <Nav/>
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
