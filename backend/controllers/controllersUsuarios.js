@@ -1,8 +1,28 @@
 const knex = require('../config/database')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
-const login = (req, res) => {
-    res.send("login")
+require('dotenv').config();
+
+const login = async (req, res) => {
+    const username  = req.body.username
+    const usuario = await knex('usuarios').select('*').where('username', '=' , username).first()
+
+    if(!usuario) {
+        return res.json({error:"Usuario no encontrado"})
+    }
+
+    const validarPassword = await bcrypt.compare(req.body.password, usuario.password);
+    if(!validarPassword) {
+        return res.json({error: "Contraseña incorrecta"})
+    }
+
+    const token = jwt.sign({
+        username: usuario.username,
+        id_permisos: usuario.id_permisos
+    }, process.env.TOKEN_SECRET);
+
+    res.send(`Hola ${usuario.username} tu token es ${token}`)
 }
 
 const registrarUsuario = async (req, res) => {
