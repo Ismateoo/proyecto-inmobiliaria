@@ -8,9 +8,9 @@ route.post("/usuarios/login", controllersUsuarios.login)
 
 route.post("/usuarios/registrarUsuario",middlewaresPermisos.permiso0 ,controllersUsuarios.registrarUsuario)
 
-route.put("/usuarios/modificarUsuario", middlewaresPermisos.permiso0, controllersUsuarios.modificarUsuario)
+route.put("/usuarios/modificarUsuario/:id", middlewaresPermisos.permiso0, controllersUsuarios.modificarUsuario)
 
-route.delete("/usuarios/eliminarUsuarios", middlewaresPermisos.permiso0, controllersUsuarios.eliminarUsuario)
+route.delete("/usuarios/eliminarUsuarios/:id", middlewaresPermisos.permiso0, controllersUsuarios.eliminarUsuario)
 
 route.get("/usuarios/verUsuarios", middlewaresPermisos.permiso0,  controllersUsuarios.verUsuarios)
 

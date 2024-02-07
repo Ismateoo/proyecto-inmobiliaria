@@ -39,16 +39,26 @@ const registrarUsuario = async (req, res) => {
     res.json(result)
 }
 
-const modificarUsuario = (req, res) => {
-    res.send("modificar")
+const modificarUsuario = async (req, res) => {
+    const body = req.body
+    const id = req.params.id
+    const result = await knex('usuarios').update(body).where({'id': id}).returning('*')
+    res.json(result)
 }
 
-const eliminarUsuario = (req, res) => {
-    res.send("eliminar")
+const eliminarUsuario = async (req, res) => {
+    const id = req.params.id
+    const result = await knex('usuarios').delete().where({'id':id}).returning('*')
+    if(result.length != 0){
+        res.send("Se ha eliminado con exito")
+    }else{
+        res.send("No se ha podido eliminar")
+    }
 }
 
-const verUsuarios = (req,res) => {
-    res.send("ver")
+const verUsuarios = async (req,res) => {
+    const result = await knex('usuarios').select('*')
+    res.json(result)
 }
 
 module.exports = {
