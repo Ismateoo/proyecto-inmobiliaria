@@ -1,10 +1,18 @@
-import "./home.css"
+import Nav from "../Nav/nav";
+import "./home.css";
 
-export default function Home(){
-    return(
+export default function Home() {
+  return (
+    <>
+      <div className="contenedor">
+        <div className="main">
+        <Nav />
         <div className="contenedor__home">
-        <h1>Bienvenidos a INMUEBLES SRL</h1>
-        <p>Hola, Usuario</p>
+          <h1>Bienvenidos a INMUEBLES SRL</h1>
+          <p>Hola, Usuario</p>
         </div>
-    )
+      </div>
+      </div>
+    </>
+  );
 }

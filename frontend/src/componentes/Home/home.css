@@ -1,8 +1,23 @@
-.contenedor__home{
-    width: 100%;
-    height: 100%;
+
+.contenedor{
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+.main{
+    width: 1400px;
+    height: 750px;
+    background-color: #F3F3CC;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.contenedor__home{
+    margin: auto;
+    text-align: center
 }

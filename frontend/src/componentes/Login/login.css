@@ -13,6 +13,7 @@
     flex-direction: column;
     margin-bottom: 50px;
     gap: 10px;
+    
 }
 
 .formulario__label{
@@ -28,3 +29,16 @@
 .formulario__input{
     border-radius: 5px;
 }
+
+.main{
+    width: 1400px;
+    height: 750px;
+    background-color: #F3F3CC;
+    display: flex;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
