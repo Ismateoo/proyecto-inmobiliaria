@@ -22,7 +22,7 @@ const login = async (req, res) => {
         id_permisos: usuario.id_permisos
     }, process.env.TOKEN_SECRET);
 
-    res.send(token)
+    res.json({token})
 }
 
 const registrarUsuario = async (req, res) => {

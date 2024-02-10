@@ -7,8 +7,16 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom"
-import Home from './componentes/Home/home.jsx'
+
+
 import Login from './componentes/Login/login.jsx'
+import VerInmuebles from './componentes/VerInmuebles/VerInmuebles.jsx'
+import FiltrarInmueble from './componentes/FiltarInmueble/FiltrarInmueble.jsx'
+/* falta el de info */
+import BuscarPorId from './componentes/BuscarPorId/BuscarPorId.jsx'
+import CrearInmueble from './componentes/CrearInmueble/CrearInmueble.jsx'
+import EditarInmueble from './componentes/EditarInmueble/EditarInmueble.jsx'
+import EliminarInmueble from './componentes/EliminarInmueble/EliminarInmueble.jsx'
 
 const router = createBrowserRouter([
   {
@@ -19,7 +27,51 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login/>
-  }
+  },
+
+  {
+    path: "/api/inmuebles",
+    element: <VerInmuebles/>
+  },
+
+  {
+    path: "/api/inmuebles/filtro",
+    element: <FiltrarInmueble/>
+  },
+
+  /* {
+    path: "/api/inmuebles/info",
+    element: <FiltrarInmueble/>
+  }, */
+
+  {
+    path: "/api/inmuebles/:id",
+    element: <BuscarPorId/>
+  },
+
+  {
+    path: "/api/inmuebles/nuevo",
+    element: <CrearInmueble/>
+  },
+
+  {
+    path: "/api/inmuebles/editar/:id",
+    element: <EditarInmueble/>
+  },
+
+  {
+    path: "/api/inmuebles/eliminar/:id",
+    element: <EliminarInmueble/>
+  },
+
+  
+
+  
+
+
+
+  
+
 ]);
 
 

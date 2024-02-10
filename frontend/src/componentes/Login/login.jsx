@@ -24,10 +24,11 @@ export default function Login() {
       }),
     });
 
-    const data = await response.text();
-    Cookies.set("token", data, { expires: 7 });
+    const data = await response.json();
+    console.log(data);
 
-    if (response.ok) {
+    if (response.ok && data.token) {
+      Cookies.set("token", data.token, { expires: 7 });
       navigate("/");
     } else {
       alert("salio mal");

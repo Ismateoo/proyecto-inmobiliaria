@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <div className="contenedor">
-        <div className="main">
+        <div className="main2">
         <Nav />
         <div className="contenedor__home">
           <h1>Bienvenidos a INMUEBLES SRL</h1>

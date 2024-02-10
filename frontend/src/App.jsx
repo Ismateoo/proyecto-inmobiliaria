@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Login from "./componentes/Login/login";
-import Nav from "./componentes/Nav/nav";
 import Home from "./componentes/Home/home";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
