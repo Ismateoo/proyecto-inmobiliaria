@@ -6,7 +6,7 @@ const middlewaresPermisos = require("../middlewares/middlewaresPermisos")
 
 route.get('/', controllersInmuebles.bienvenida);
 
-route.get('/api/inmuebles', middlewaresPermisos.permiso1, controllersInmuebles.verTodos);
+route.get('/api/inmuebles', /* middlewaresPermisos.permiso1, */ controllersInmuebles.verTodos);  /* tuve que sacar este permiso porque en el front lo necesito para otras funcionalidades (ej. borrar) */
 
 route.get('/api/inmuebles/filtro', middlewaresPermisos.permiso2, controllersInmuebles.filtrarInmueble);
 
