@@ -1,39 +1,20 @@
 import { useState } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import useUsuarios from "../../../rule_user";
 
 export default function Login() {
   const navigate = useNavigate();
+  const {login} = useUsuarios();
 
   async function handleOnSumbit(e) {
     e.preventDefault();
     const username = e.target["username"].value;
     const password = e.target["password"].value;
+    login(username, password)
 
-    const response = await fetch("http://localhost:3001/usuarios/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-    });
-
-    const data = await response.json();
-    console.log(data);
-
-    if (response.ok && data.token) {
-      Cookies.set("token", data.token, { expires: 7 });
-      navigate("/");
-    } else {
-      alert("salio mal");
-    }
-  }
+}
 
   return (
     <div className="contenedor">

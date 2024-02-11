@@ -8,7 +8,7 @@ export default function Home() {
         <div className="main2">
         <Nav />
         <div className="contenedor__home">
-          <h1>Bienvenidos a INMUEBLES SRL</h1>
+          <h1 className="poppins-bold">Bienvenidos a INMUEBLES SRL</h1>
           <p>Hola, Usuario</p>
         </div>
       </div>

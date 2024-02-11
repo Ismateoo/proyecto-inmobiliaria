@@ -12,7 +12,7 @@ import {
 import Login from './componentes/Login/login.jsx'
 import VerInmuebles from './componentes/VerInmuebles/VerInmuebles.jsx'
 import FiltrarInmueble from './componentes/FiltarInmueble/FiltrarInmueble.jsx'
-/* falta el de info */
+import Info from './componentes/Info/Info.jsx'
 import BuscarPorId from './componentes/BuscarPorId/BuscarPorId.jsx'
 import CrearInmueble from './componentes/CrearInmueble/CrearInmueble.jsx'
 import EditarInmueble from './componentes/EditarInmueble/EditarInmueble.jsx'
@@ -39,10 +39,10 @@ const router = createBrowserRouter([
     element: <FiltrarInmueble/>
   },
 
-  /* {
+  {
     path: "/api/inmuebles/info",
-    element: <FiltrarInmueble/>
-  }, */
+    element: <Info/>
+  },
 
   {
     path: "/api/inmuebles/:id",
