@@ -46,7 +46,7 @@ export default function Nav() {
         </Link>
       </div>
       <div className="nav__item">
-        <Link to={`/`}>
+        <Link to={`/usuarios`}>
           <span>Usuarios</span>
         </Link>
       </div>

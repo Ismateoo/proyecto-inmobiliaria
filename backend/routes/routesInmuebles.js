@@ -20,6 +20,6 @@ route.put('/api/inmuebles/editar/:id', middlewaresPermisos.permiso2, controllers
 
 route.delete('/api/inmuebles/eliminar/:id',middlewaresPermisos.permiso3, controllersInmuebles.eliminarInmueble);
 
-
+route.post('/api/inmuebles/filtro2', middlewaresPermisos.permiso2, controllersInmuebles.filtrarInmueble2);
 
 module.exports = route;

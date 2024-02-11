@@ -17,6 +17,11 @@ import BuscarPorId from './componentes/BuscarPorId/BuscarPorId.jsx'
 import CrearInmueble from './componentes/CrearInmueble/CrearInmueble.jsx'
 import EditarInmueble from './componentes/EditarInmueble/EditarInmueble.jsx'
 import EliminarInmueble from './componentes/EliminarInmueble/EliminarInmueble.jsx'
+import Usuarios from './componentes/Usuarios/Usuarios.jsx'
+import CrearUsuarios from './componentes/CrearUsuarios/CrearUsuarios.jsx'
+import ModificarUsuarios from './componentes/ModificarUsuarios/ModificarUsuarios.jsx'
+import VerUsuarios from './componentes/VerUsuarios/VerUsuarios.jsx'
+import EliminarUsuarios from './componentes/EliminarUsuarios/EliminarUsuarios.jsx'
 
 const router = createBrowserRouter([
   {
@@ -64,6 +69,30 @@ const router = createBrowserRouter([
     element: <EliminarInmueble/>
   },
 
+  {
+    path: "/usuarios",
+    element: <Usuarios/>
+  },
+  
+  {
+    path: "/usuarios/registrarUsuario",
+    element: <CrearUsuarios/>
+  },
+
+  {
+    path: "/usuarios/modificarUsuario/:id",
+    element: <ModificarUsuarios/>
+  },
+
+  {
+    path: "/usuarios/verUsuarios",
+    element: <VerUsuarios/>
+  },
+
+  {
+    path: "/usuarios/eliminarUsuarios/:id",
+    element: <EliminarUsuarios/>
+  },
   
 
   

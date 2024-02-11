@@ -118,9 +118,10 @@ export default function useInmuebles() {
     metroscuadrados,
     precioventa
   ) => {
-    const response = await fetch("http://localhost:3001/api/inmuebles/filtro",
+    const response = await fetch("http://localhost:3001/api/inmuebles/filtro2",
     
     {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         autorizacion: Cookies.get("token"),

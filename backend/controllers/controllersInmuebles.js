@@ -72,6 +72,24 @@ const mostrarInfo = async (req, res) => {
     res.json({mensaje: `Hay ${cantidad} inmuebles registrados hasta el momento ${fecha}`})
 }
 
+const filtrarInmueble2 = async (req, res) => {
+    const metrosCuadrados = req.body.metroscuadrados
+    const precioVenta = req.body.precioventa
+    let result = ""
+
+    if(metrosCuadrados && precioVenta){
+     result = await knex('inmobiliaria').select('*').where({'metroscuadrados': metrosCuadrados}).orWhere({'precioventa': precioVenta})
+     
+    }else if(metrosCuadrados){
+         result = await knex('inmobiliaria').select('*').where({'metroscuadrados': metrosCuadrados})
+        
+    } else if(precioVenta){
+         result = await knex('inmobiliaria').select('*').where({'precioventa': precioVenta})
+         
+    }
+    res.json(result)
+}
+
 module.exports = {
     bienvenida,
     verTodos,
@@ -80,6 +98,7 @@ module.exports = {
     editarInmueble,
     eliminarInmueble,
     filtrarInmueble,
-    mostrarInfo
+    mostrarInfo,
+    filtrarInmueble2
 }
 
