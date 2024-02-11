@@ -69,7 +69,7 @@ const mostrarInfo = async (req, res) => {
     
     cantidad = cantidad[0].count
     fecha = fecha[0].current_timestamp
-    res.send(`Hay ${cantidad} inmuebles registrados hasta el momento ${fecha}`)
+    res.json({mensaje: `Hay ${cantidad} inmuebles registrados hasta el momento ${fecha}`})
 }
 
 module.exports = {

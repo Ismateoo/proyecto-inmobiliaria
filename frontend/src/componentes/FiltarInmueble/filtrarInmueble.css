@@ -21,3 +21,8 @@
     margin: auto;
     text-align: center
 }
+
+.form_filtrar{
+    display: flex;
+    gap: 10px;
+}

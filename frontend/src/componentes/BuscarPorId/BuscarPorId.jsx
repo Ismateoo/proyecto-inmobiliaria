@@ -9,7 +9,6 @@ export default function BuscarPorId() {
 
   useEffect(() => {
     verInmuebles();
-    console.log(inmuebles);
   }, []);
 
   async function handleOnSumbit(e) {
