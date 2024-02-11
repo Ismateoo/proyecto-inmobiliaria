@@ -41,6 +41,10 @@ const registrarUsuario = async (req, res) => {
 
 const modificarUsuario = async (req, res) => {
     const body = req.body
+    const salt = await bcrypt.genSalt(10);
+    const passwordHash = await bcrypt.hash(req.body.password, salt);
+    req.body.password = passwordHash
+
     const id = req.params.id
     const result = await knex('usuarios').update(body).where({'id': id}).returning('*')
     res.json(result)

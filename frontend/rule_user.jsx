@@ -8,6 +8,7 @@ export default function useInmuebles() {
   const [buscarInmueble, setBuscarInmueble] = useState([]);
   const [inmuebleFiltrado, setinmuebleFiltrado] = useState([]);
   const [informacion, setInformacion] = useState([]);
+  const [usuarios, setUsuarios] = useState([]);
 
   const login = async (username, password) => {
     const response = await fetch("http://localhost:3001/usuarios/login", {
@@ -146,6 +147,75 @@ export default function useInmuebles() {
     setInformacion(data.mensaje)
   }
 
+  const verUsuarios = async () => {
+    const response = await fetch("http://localhost:3001/usuarios/verUsuarios", {
+      headers: {
+        autorizacion: Cookies.get("token"),
+      },
+    });
+    const data = await response.json();
+    setUsuarios(data);
+  };
+
+    const crearUsuario = async (
+      username,
+      password,
+      id_permisos,
+    ) => {
+      const response = await fetch("http://localhost:3001/usuarios/registrarUsuario", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          autorizacion: Cookies.get("token"),
+        },
+  
+        body: JSON.stringify({
+          username,
+          password,
+          id_permisos,
+        }),
+      });
+  
+      const data = await response.json();
+      console.log(data.username);
+    };
+
+    const modificarUsuario = async (
+      id,
+      username,
+      password,
+      id_permisos,
+    ) => {
+      const response = await fetch(
+        `http://localhost:3001/usuarios/modificarUsuario/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            autorizacion: Cookies.get("token"),
+          },
+          body: JSON.stringify({
+            username,
+            password,
+            id_permisos,
+          }),
+        }
+      );
+    };
+
+    const eliminarUsuario = async (id) => {
+      const response = await fetch(
+        `http://localhost:3001/usuarios/eliminarUsuarios/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            autorizacion: Cookies.get("token"),
+          },
+        }
+      );
+    };
+  
+  
   return {
     login,
     verInmuebles,
@@ -158,6 +228,13 @@ export default function useInmuebles() {
     inmuebleFiltrado,
     filtrarInmueble,
     mostarInfo,
-    informacion
+    informacion,
+    crearUsuario,
+    verUsuarios,
+    usuarios,
+    modificarUsuario,
+    eliminarUsuario
   };
 }
+
+
